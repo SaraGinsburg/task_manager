@@ -1,5 +1,10 @@
 <h1>List show page</h1>
 <h2><%= @list.name %></h2>
+<ul>
+  <% @tasks.each do |task| %>
+    <li><%= task.name %> - <%= task.status %></li>
+  <% end %>
+</ul>
 
 <%= link_to "new task", new_task_path %>
 

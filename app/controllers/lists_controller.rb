@@ -16,6 +16,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @tasks = @list.tasks.sort {|a, b| a.due_date <=> b.due_date}
   end
 
   private
