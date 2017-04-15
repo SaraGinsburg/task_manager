@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  list: 
+  status: 
+  due_date: 2017-04-15 17:21:28
+
+two:
+  name: 
+  list: 
+  status: 
+  due_date: 2017-04-15 17:21:28
