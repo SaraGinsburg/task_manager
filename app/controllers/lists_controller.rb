@@ -6,7 +6,7 @@ class ListsController < ApplicationController
       redirect_to lists_path
     else
       @lists = List.all
-      @new_list = List.new
+      @new_list = @list || List.new
       render :index
     end
   end
@@ -19,7 +19,7 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     # @list.tasks.sort {|a, b| a.due_date <=> b.due_date}
-    @new_task = Task.new
+    @task = Task.new
   end
 
   private

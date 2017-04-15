@@ -5,7 +5,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to list_path(@list)
     else
-      render list_path(@list)
+      render '/lists/show'
     end
   end
 

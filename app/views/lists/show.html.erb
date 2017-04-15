@@ -8,9 +8,9 @@
   </ul>
 <% end %>
 
-<%= form_for [@list, @new_task] do |f| %>
+<%= form_for [@list, @task] do |f| %>
   <%= f.label :name, "task details"%>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, placeholder: @task.errors.full_messages_for(:name).first%>
   <%= f.label :due_date, "due date"%>
   <%= f.datetime_select :due_date, ampm: true, :minute_step => 15 %>
   <%= f.hidden_field :status, value: "not started" %>

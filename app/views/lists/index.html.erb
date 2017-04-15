@@ -7,6 +7,6 @@
 </ul>
 
 <%= form_for @new_list do |f| %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, placeholder: @new_list.errors.full_messages_for(:name).first%>
   <%= f.submit "add list" %>
 <% end %>
