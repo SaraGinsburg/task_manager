@@ -1,7 +1,4 @@
 class ListsController < ApplicationController
-  def new
-    @list = List.new
-  end
 
   def create
     @list = List.new(list_params)
@@ -14,10 +11,11 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.all
+    @new_list = List.new
   end
 
   def show
-    @list = List.find(param[:id])
+    @list = List.find(params[:id])
   end
 
   private

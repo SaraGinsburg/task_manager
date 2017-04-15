@@ -1,7 +1,12 @@
 <h1>List index page</h1>
 
+<ul>
 <% @lists.each do |list| %>
-  <%= link_to list.name, list_path(list) %>
+  <li><%= link_to list.name, list_path(list) %></li>
 <% end %>
+</ul>
 
-<%= link_to "new list", new_list_path %>
+<%= form_for @new_list do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit "add list" %>
+<% end %>
