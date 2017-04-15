@@ -1,11 +1,20 @@
 <h1>List show page</h1>
 <h2><%= @list.name %></h2>
-<ul>
-  <% @tasks.each do |task| %>
-    <li><%= task.name %> - <%= task.status %></li>
-  <% end %>
-</ul>
+<% if @list.tasks != [] %>
+  <ul>
+    <% @list.tasks.each do |task| %>
+      <li><%= task.name %> - <%= task.status %></li>
+    <% end %>
+  </ul>
+<% end %>
 
-<%= link_to "new task", new_task_path %>
+<%= form_for [@list, @new_task] do |f| %>
+  <%= f.label :name, "task details"%>
+  <%= f.text_field :name %>
+  <%= f.label :due_date, "due date"%>
+  <%= f.datetime_select :due_date, ampm: true, :minute_step => 15 %>
+  <%= f.hidden_field :status, value: "not started" %>
+  <%= f.submit "add task" %>
+<% end %>
 
 <%= link_to 'home', lists_path %>
