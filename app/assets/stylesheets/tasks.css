@@ -5,3 +5,7 @@ li.not_started {
 li.started {
   color: yellow;
 }
+
+li.finished {
+  color: green;
+}

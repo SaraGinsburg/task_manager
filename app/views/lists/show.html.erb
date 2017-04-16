@@ -3,7 +3,15 @@
 <% if @list.tasks != [] %>
   <ul>
     <% @list.tasks.each do |task| %>
-      <li class= "<%= task.status %>"><%= task.name %></li>
+      <li class= "<%= task.status %>">
+        <%= task.name %>
+        <%= form_tag [@list, task], method: "put" do%>
+          <%= radio_button("task", :status, 'not_started') %>
+          <%= radio_button("task", :status, 'started') %>
+          <%= radio_button("task", :status, 'finished') %>
+          <%= submit_tag %>
+        <% end %>
+      </li>
     <% end %>
   </ul>
 <% end %>
