@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :tasks, only: [:create, :update, :destroy]
   end
 
-  root "lists#index"
+  authenticated :user do
+    root 'lists#index'
+  end
+  root 'welcome#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
