@@ -2,20 +2,10 @@
 <h2><%= @list.name %></h2>
 <% if @list.tasks != [] %>
   <ul>
-    <% @list.tasks.each do |task| %>
-      <li class= "<%= task.status %>">
-        <%= task.name %>
-        <%= form_tag [@list, task], method: "put" do%>
-          <%= radio_button("task", :status, 'not_started', checked: (task.status == "not_started")) %>
-          <%= label_tag(:status, 'Not Started') %>
-          <%= radio_button("task", :status, 'started', checked: (task.status == "started")) %>
-          <%= label_tag(:status, 'Started') %>
-          <%= radio_button("task", :status, 'finished', checked: (task.status == "finished")) %>
-          <%= label_tag(:status, 'Finished') %>
-          <%= submit_tag %>
-        <% end %>
-      </li>
-    <% end %>
+    <%= render collection: @list.tasks, partial: "tasks/task_li", as: :task %>
+    <!-- <% @list.tasks.each do |task| %>
+      <%= render partial: "tasks/task_li", locals: {task: task} %>
+    <% end %> -->
   </ul>
 <% end %>
 
