@@ -9,4 +9,5 @@
     <%= label_tag(:status, 'Finished') %>
     <%= submit_tag %>
   <% end %>
+  <%= button_to "delete", [@list, task], method: :delete %>
 </li>
