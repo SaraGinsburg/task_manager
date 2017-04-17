@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :lists, only: [:index, :create, :show] do
     resources :tasks, only: [:create, :update, :destroy]
   end
