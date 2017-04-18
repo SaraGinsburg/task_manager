@@ -1,0 +1,2 @@
+class SharedList < ApplicationRecord
+end
