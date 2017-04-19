@@ -28,12 +28,14 @@ class ListsController < ApplicationController
     @task = Task.new
   end
 
-  def edit
-
+  def update
+    @list.update(list_params)
+    redirect_to lists_path
   end
 
   def destroy
-
+    @list.destroy
+    redirect_to lists_path
   end
 
   private

@@ -5,36 +5,36 @@ class ListPolicy < ApplicationPolicy
     #current_list
     @record = record
   end
-  #
-  # def index?
-  #   @resource.users
-  # end
-  #
-  # def show?
-  #   @resource.users
-  # end
-  #
-  # def destroy?
-  #   @resource.users && @resource.shared_lists.find_by(user: @user).owner?
-  # end
-  #
-  # def update?
-  #
-  # end
+
+  def show?
+    is_collaborator? || is_owner?
+  end
+
+  def update?
+    is_collaborator? || is_owner?
+  end
+
+  def update?
+    is_owner?
+  end
+
+  def destroy?
+    is_owner?
+  end
+
   class Scope < Scope
     def resolve
       @user.lists
-
     end
   end
 
   private
 
   def is_collaborator?
-    @resource.shared_lists.find_by(user: @user).collaborator?
+    @record.shared_lists.find_by(user: @user).collaborator?
   end
 
   def is_owner?
-    @resource.shared_lists.find_by(user: @user).owner?
+    @record.shared_lists.find_by(user: @user).owner?
   end
 end
