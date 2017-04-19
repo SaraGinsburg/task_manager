@@ -3,6 +3,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     if @list.save
+      @list.shared_lists.build(user: current_user, permission: :owner ).save
       redirect_to lists_path
     else
       @lists = List.all
