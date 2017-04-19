@@ -1,4 +1,9 @@
 class ListsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_list, only: [:show, :edit, :update, :destroy]
+
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
 
   def create
     @list = List.new(list_params)
@@ -6,7 +11,6 @@ class ListsController < ApplicationController
       @list.shared_lists.build(user: current_user, permission: :owner).save
       redirect_to lists_path
     else
-      raise params.inspect
       @lists = List.all
       @new_list = @list || List.new
       render :index
@@ -14,18 +18,30 @@ class ListsController < ApplicationController
   end
 
   def index
-    @lists = List.all
+    @lists = policy_scope(List)
     @new_list = List.new
     @new_list.shared_lists.build(user: current_user, permission: :collaborator)
   end
 
   def show
-    @list = List.find(params[:id])
     # @list.tasks.sort {|a, b| a.due_date <=> b.due_date}
     @task = Task.new
   end
 
+  def edit
+
+  end
+
+  def destroy
+
+  end
+
   private
+  def set_list
+    @list = List.find(params[:id])
+    authorize @list
+  end
+
   def list_params
     params.require(:list).permit(:name, user_ids:[])
   end
