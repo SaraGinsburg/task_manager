@@ -3,9 +3,10 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     if @list.save
-      @list.shared_lists.build(user: current_user, permission: :owner ).save
+      @list.shared_lists.build(user: current_user, permission: :owner).save
       redirect_to lists_path
     else
+      raise params.inspect
       @lists = List.all
       @new_list = @list || List.new
       render :index
@@ -15,6 +16,7 @@ class ListsController < ApplicationController
   def index
     @lists = List.all
     @new_list = List.new
+    @new_list.shared_lists.build(user: current_user, permission: :collaborator)
   end
 
   def show
@@ -25,6 +27,6 @@ class ListsController < ApplicationController
 
   private
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, user_ids:[])
   end
 end
