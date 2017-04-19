@@ -9,4 +9,8 @@ class List < ApplicationRecord
       self.shared_lists.build(user: User.find(user_id), permission: :collaborator).save
     end
   end
+
+  def owner
+    self.shared_lists.find_by(permission: :owner).user
+  end
 end

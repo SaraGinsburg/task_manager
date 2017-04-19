@@ -1,5 +1,11 @@
-<h1>List show page</h1>
-<h2><%= @list.name %></h2>
+<h1><%= @list.name %></h1>
+<% if current_user == @list.owner %>
+  <h3>You own this list!</h3>
+<% else %>
+  <h3><%= @list.owner.first_name %> owns this list!</h3>
+<% end %>
+
+
 <% if @list.tasks != [] %>
   <ul>
     <%= render collection: @list.tasks, partial: "tasks/task_li", as: :task %>
