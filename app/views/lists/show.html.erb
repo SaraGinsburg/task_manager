@@ -1,4 +1,4 @@
-<h1><%= @list.name %></h1>
+<h2><%= @list.name %></h2>
 <% if current_user == @list.owner %>
   <h3>You own this list!</h3>
 <% else %>
@@ -11,6 +11,7 @@
     <%= render collection: @list.tasks, partial: "tasks/task_li", as: :task %>
   </ul>
 <% end %>
+
 
 <%= form_for [@list, @task] do |f| %>
   <%= f.label :name, "task details"%>

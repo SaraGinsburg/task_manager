@@ -10,6 +10,7 @@ gem 'omniauth'
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem "omniauth-google-oauth2"
 gem 'pundit'
+gem 'record_tag_helper'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
