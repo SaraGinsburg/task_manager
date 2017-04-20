@@ -1,11 +1,11 @@
 li.not_started {
-  color: grey;
+  background-color: #9d7a62;
 }
 
 li.started {
-  color: yellow;
+  background-color: #ffa162;
 }
 
 li.finished {
-  color: green;
+  background-color: #eb5e00;
 }

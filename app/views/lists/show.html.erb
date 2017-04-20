@@ -1,6 +1,6 @@
 <h2><%= @list.name %></h2>
 <% if current_user == @list.owner %>
-  <h3>You own this list!</h3>
+  <h4>You own this list!</h4>
 <% else %>
   <h3><%= @list.owner.first_name %> owns this list!</h3>
 <% end %>
@@ -15,11 +15,11 @@
 
 <%= form_for [@list, @task] do |f| %>
   <%= f.label :name, "task details"%>
-  <%= f.text_field :name, placeholder: @task.errors.full_messages_for(:name).first%>
+  <%= f.text_field :name, placeholder: @task.errors.full_messages_for(:name).first%><br>
   <%= f.label :due_date, "due date"%>
   <%= f.datetime_select :due_date, ampm: true, :minute_step => 15 %>
   <%= f.hidden_field :status, value: "not_started" %>
   <%= f.submit "add task" %>
 <% end %>
 
-<%= link_to 'home', lists_path %>
+<%= link_to 'home', lists_path, class:"home" %>
