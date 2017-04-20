@@ -6,6 +6,10 @@ class ListPolicy < ApplicationPolicy
     @record = record
   end
 
+  def create?
+    @user
+  end
+
   def show?
     is_collaborator? || is_owner?
   end

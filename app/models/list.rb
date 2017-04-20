@@ -13,4 +13,5 @@ class List < ApplicationRecord
   def owner
     self.shared_lists.find_by(permission: :owner).user
   end
+
 end

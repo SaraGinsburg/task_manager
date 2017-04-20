@@ -4,8 +4,8 @@
 <% @lists.each do |list| %>
   <li>
     <%= link_to list.name, list_path(list) %>
-    <%= link_to "Rename list", edit_list_path(list) %>
-    <%= button_to "❌", list, method: :delete %>
+      <%= link_to "Rename list", edit_list_path(list) if policy(list).update? %>
+      <%= button_to "❌", list, method: :delete if policy(list).destroy? %>
   </li>
 <% end %>
 </ul>
