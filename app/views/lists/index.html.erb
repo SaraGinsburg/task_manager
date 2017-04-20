@@ -14,12 +14,4 @@
 
 <br><br>
 
-<div>
-<%= form_for @new_list do |f| %>
-  <%= f.label "New List" %>
-  <%= f.text_field :name, placeholder: @new_list.errors.full_messages_for(:name).first%><br>
-  <%= f.label "add collaborators?" %>
-  <%= f.collection_check_boxes(:user_ids, User.all, :id, :full_name, include_hidden: false)%>
-  <%= f.submit "add list" %>
-<% end %>
-</div>
+<%= render partial: "lists/new_list_form", locals: {list: @new_list} %>

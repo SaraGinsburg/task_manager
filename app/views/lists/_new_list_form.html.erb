@@ -1,0 +1,7 @@
+<%= form_for list do |f| %>
+  <%= f.label "New List" %>
+  <%= f.text_field :name, placeholder: list.errors.full_messages_for(:name).first%><br>
+  <%= f.label "add collaborators?" %>
+  <%= f.collection_check_boxes(:user_ids, User.all, :id, :full_name, include_hidden: false)%>
+  <%= f.submit "add list" %>
+<% end %>

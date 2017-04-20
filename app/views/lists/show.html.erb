@@ -12,14 +12,6 @@
   </ul>
 <% end %>
 
-
-<%= form_for [@list, @task] do |f| %>
-  <%= f.label :name, "task details"%>
-  <%= f.text_field :name, placeholder: @task.errors.full_messages_for(:name).first%><br>
-  <%= f.label :due_date, "due date"%>
-  <%= f.datetime_select :due_date, ampm: true, :minute_step => 15 %>
-  <%= f.hidden_field :status, value: "not_started" %>
-  <%= f.submit "add task" %>
-<% end %>
+<%= render partial: 'tasks/new_task_form', locals: {list: @list, task: @task} %>
 
 <%= link_to 'home', lists_path, class:"home" %>
