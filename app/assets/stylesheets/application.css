@@ -64,6 +64,10 @@ input[type=submit] {
     border-radius: 15px;
 }
 
+.dark {
+  background: #ffa162;
+}
+
 @media screen and (min-width: 600px) {
     .nav li {
         width: 120px;
