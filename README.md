@@ -1,24 +1,19 @@
-# README
+# Task Manager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This task manager was created using Ruby on Rails as the third portfolio project for Flatiron School's Online Full-stack Web Developer Curriculum.
 
-Things you may want to cover:
+## Installation and Usage
 
-* Ruby version
+Clone this repository.
+Run `rake db:migrate` to establish the database.
+Run `rails server` to interact with the application in your browser!
 
-* System dependencies
+## Contributing
 
-* Configuration
+Bug reports and pull requests are welcome on GitHub at https://github.com/briecoyle/board-game-tracker-sinatra-project. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
-* Database creation
+## License
 
-* Database initialization
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/now-playing-cli-gem' title='Now::Playing::Cli::Gem'>Now::Playing::Cli::Gem</a> on Learn.co and start learning to code for free.</p>
