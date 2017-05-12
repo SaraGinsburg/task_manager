@@ -9,5 +9,8 @@
     <%= label_tag(:status, 'Finished') %>
     <%= submit_tag "✔️" %>
   <% end %>
+  <% task.tags.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
   <%= button_to "❌", [@list, task], method: :delete if policy(@list).destroy? %>
 </li>
