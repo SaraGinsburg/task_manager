@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+gem 'pry'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-oauth2', '~> 1.3.1'

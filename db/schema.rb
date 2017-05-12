@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419012750) do
+ActiveRecord::Schema.define(version: 20170512020248) do
 
   create_table "lists", force: :cascade do |t|
     t.string   "name"
@@ -26,6 +26,12 @@ ActiveRecord::Schema.define(version: 20170419012750) do
     t.integer  "permission"
     t.index ["list_id"], name: "index_shared_lists_on_list_id"
     t.index ["user_id"], name: "index_shared_lists_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name"
+    t.integer "task_id"
+    t.index ["task_id"], name: "index_tags_on_task_id"
   end
 
   create_table "tasks", force: :cascade do |t|
