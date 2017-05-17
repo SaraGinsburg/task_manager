@@ -1,6 +1,6 @@
 # Task Manager
 
-This task manager was created using Ruby on Rails as the third portfolio project for Flatiron School's Online Full-stack Web Developer Curriculum.
+This task manager was created using Ruby on Rails as the third portfolio project for Flatiron School's Online Full-stack Web Developer Curriculum. It is a single page application that allows one to create to-do lists and collaborate on task items.
 
 ## Installation and Usage
 
@@ -15,5 +15,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/brieco
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/now-playing-cli-gem' title='Now::Playing::Cli::Gem'>Now::Playing::Cli::Gem</a> on Learn.co and start learning to code for free.</p>
