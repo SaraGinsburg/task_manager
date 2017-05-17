@@ -25,7 +25,12 @@ class ListsController < ApplicationController
 
   def show
     # @list.tasks.sort {|a, b| a.due_date <=> b.due_date}
-    @task = Task.new
+      @list = List.find(params[:id])
+      @task = Task.new
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @list }
+      end
   end
 
   def update
