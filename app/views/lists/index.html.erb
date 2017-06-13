@@ -10,6 +10,7 @@
     <%= link_to list.name, list_path(list), class: "list-link", data: {id: list.id} %>
     <%= link_to "Rename list", edit_list_path(list), class: "dark" if policy(list).update? %>
     <%= button_to "❌", list, method: :delete if policy(list).destroy? %>
+    <div class = "tasks-container"></div>
   </li>
 <% end %>
 </ul>

@@ -11,7 +11,7 @@ function bindClickHandlers() {
         return response.json()
       })
       .then(function(list) {
-        console.log(list.tasks)
+        $(".tasks-container").html("hello")
       })
   })
 }
