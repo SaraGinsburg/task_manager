@@ -11,7 +11,8 @@ function bindClickHandlers() {
         return response.json()
       })
       .then(function(list) {
-        $(".tasks-container").html("hello")
+        console.log(list)
+        $(".tasks-container").html(list)
       })
   })
 }
