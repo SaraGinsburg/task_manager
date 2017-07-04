@@ -14,8 +14,8 @@ function bindClickHandlers() {
           console.log(task)
           let newTask = new Task(task);
           let taskHtml = newTask.formatTask();
-
-          $(".tasks-container").append(taskHtml)
+          let $container = ".list-" + task.list_id + "-tasks-container"
+          $($container).append(taskHtml)
         })
       })
   })
