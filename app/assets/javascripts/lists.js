@@ -31,7 +31,9 @@ function Task(task) {
 
 Task.prototype.formatTask = function() {
   let taskHtml = `
-    <li class="${this.status}">${this.name}<li>
+    <li class="${this.status}">
+      <a href="/lists/${this.list_id}">${this.name}</a>
+    <li>
   `
   return taskHtml
 }
