@@ -1,11 +1,11 @@
-li.not_started {
-  background-color: #9d7a62;
+li.finished {
+  background-color: #eb5e00;
 }
 
 li.started {
   background-color: #ffa162;
 }
 
-li.finished {
-  background-color: #eb5e00;
+li.not_started {
+  background-color: #9d7a62;
 }

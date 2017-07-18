@@ -19,6 +19,15 @@ function bindClickHandlers() {
         })
       })
   })
+
+  $(document).on("click", '.delete_button', function(event) {
+    event.preventDefault();
+    fetch(`${this.action}`, {
+      method: 'delete',
+      credentials:'include'
+    })
+      .then(response => $(event.target).hide())
+  })
 }
 
 function Task(task) {
@@ -32,7 +41,11 @@ function Task(task) {
 Task.prototype.formatTask = function() {
   let taskHtml = `
     <li class="${this.status}">
-      <a href="/lists/${this.list_id}">${this.name}</a>
+      <a href="/lists/${this.list_id}" class="task-link" data-id="${this.id}" data-listid="${this.list_id}">${this.name}</a>
+      <form class="button_to delete_button" method="post" action="/lists/${this.list_id}/tasks/${this.id}">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" name="commit" value="❌">
+      </form>
     <li>
   `
   return taskHtml
