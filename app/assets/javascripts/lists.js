@@ -28,6 +28,16 @@ function bindClickHandlers() {
     })
       .then(response => $(event.target).hide())
   })
+
+  // $(document).on("click", '.task-link', function(event) {
+  //   event.preventDefault();
+  //   let id=$(this).attr('data-id');
+  //   let listId=$(this).attr('data-listid');
+  //   fetch(`/lists/${listId}/tasks/${id}`, {
+  //     method: 'patch',
+  //     credentials: 'include'
+  //   })
+  // })
 }
 
 function Task(task) {
