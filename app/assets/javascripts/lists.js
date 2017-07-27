@@ -51,17 +51,32 @@ const listsApi = {
       .then(response => response.json())
   },
 
-  createLists(list) {
+  createList(list) {
     return fetch(`/lists`, {
       method: 'POST',
-      credentials: 'include'
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ list: list })
      })
+   }
       .then(response => response.json())
       .catch(error => console.log("Error creating list: ", error))
+  }
+
+  updateList(list) {
+    return fetch(`/lists/${list.id}`) {
+      method: 'PATCH',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ list: list
+      })
+    }
+      .then(response => response.json())
+      .catch(error => console.log("Error updating list: ", error))
   }
 }
 
