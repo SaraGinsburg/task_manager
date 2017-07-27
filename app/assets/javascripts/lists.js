@@ -18,16 +18,6 @@ function bindClickHandlers() {
     })
       .then(response => $(event.target).hide())
   })
-
-  // $(document).on("click", '.task-link', function(event) {
-  //   event.preventDefault();
-  //   let id=$(this).attr('data-id');
-  //   let listId=$(this).attr('data-listid');
-  //   fetch(`/lists/${listId}/tasks/${id}`, {
-  //     method: 'patch',
-  //     credentials: 'include'
-  //   })
-  // })
 }
 
 function appendListToDOM(list, element) {
@@ -81,11 +71,11 @@ const listsApi = {
 }
 
 function Task(task) {
-  this.id = task.id
-  this.name = task.name
-  this.status = task.status
-  this.due_date = task.due_date
-  this.list_id = task.list_id
+  this.id = task.id;
+  this.name = task.name;
+  this.status = task.status;
+  this.due_date = task.due_date;
+  this.list_id = task.list_id;
 }
 
 Task.prototype.formatTask = function() {
@@ -99,4 +89,12 @@ Task.prototype.formatTask = function() {
     <li>
   `
   return taskHtml
+}
+
+function List(list) {
+  this.id = list.id;
+  this.name = list.name;
+  this.updated_at = list.updated_at;
+  this.created_at = list.created_at;
+  this.tasks = list.tasks;
 }
