@@ -5,19 +5,9 @@ $(document).ready(function() {
 function bindClickHandlers() {
   $(".list-link").on("click", function(event) {
     event.preventDefault();
-    let id=$(this).attr('data-id')
-    fetch(`/lists/${id}.json`, {credentials: 'include'})
-      .then(response => response.json())
-      .then(list => {
-        $("#tasks-container").html("")
-        list.tasks.forEach(task => {
-          console.log(task)
-          let newTask = new Task(task);
-          let taskHtml = newTask.formatTask();
-          let $container = ".list-" + task.list_id + "-tasks-container"
-          $($container).append(taskHtml)
-        })
-      })
+    let id = $(this).attr('data-id')
+    listApi.getList(id)
+      .then(list => appendListToDOM(list, $("#tasks-container")))
   })
 
   $(document).on("click", '.delete_button', function(event) {
@@ -38,6 +28,41 @@ function bindClickHandlers() {
   //     credentials: 'include'
   //   })
   // })
+}
+
+function appendListToDOM(list, element) {
+  element.html("")
+  list.tasks.forEach(task => {
+    let newTask = new Task(task);
+    let taskHtml = newTask.formatTask();
+    let $container = ".list-" + task.list_id + "-tasks-container"
+    $($container).append(taskHtml)
+  })
+}
+
+const listsApi = {
+  getList(id) {
+    return fetch(`/lists/${id}.json`, {credentials: 'include'})
+      .then(response => response.json())
+  },
+
+  getLists() {
+    return fetch(`/lists.json`, { credentials: 'include' })
+      .then(response => response.json())
+  },
+
+  createLists(list) {
+    return fetch(`/lists`, {
+      method: 'POST',
+      credentials: 'include'
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ list: list })
+     })
+      .then(response => response.json())
+      .catch(error => console.log("Error creating list: ", error))
+  }
 }
 
 function Task(task) {
