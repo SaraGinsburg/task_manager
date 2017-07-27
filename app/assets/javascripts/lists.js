@@ -30,7 +30,7 @@ function appendListToDOM(list, element) {
   })
 }
 
-const listsApi = {
+const listApi = {
   getList(id) {
     return fetch(`/lists/${id}.json`, {credentials: 'include'})
       .then(response => response.json())
@@ -50,21 +50,19 @@ const listsApi = {
       },
       body: JSON.stringify({ list: list })
      })
-   }
       .then(response => response.json())
       .catch(error => console.log("Error creating list: ", error))
-  }
+  },
 
   updateList(list) {
-    return fetch(`/lists/${list.id}`) {
+    return fetch(`/lists/${list.id}`, {
       method: 'PATCH',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ list: list
-      })
-    }
+      body: JSON.stringify({ list: list})
+    })
       .then(response => response.json())
       .catch(error => console.log("Error updating list: ", error))
   }
