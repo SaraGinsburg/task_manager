@@ -8,16 +8,25 @@ function bindClickHandlers() {
     let id = $(this).attr('data-id')
     listApi.getList(id)
       .then(list => appendListToDOM(list, $("#tasks-container")))
-  })
+  }),
 
   $(document).on("click", '.delete_button', function(event) {
     event.preventDefault();
+    debugger;
     fetch(`${this.action}`, {
       method: 'delete',
       credentials:'include'
     })
-      .then(response => $(event.target).hide())
+      .then(response => {
+        if (response.ok) {
+
+          // FInd the task taht was deleted in the DOM
+          // REmove the task element from the  DOM
+        }
+      })
+
   })
+
 }
 
 function appendListToDOM(list, element) {
@@ -25,8 +34,9 @@ function appendListToDOM(list, element) {
   list.tasks.forEach(task => {
     let newTask = new Task(task);
     let taskHtml = newTask.formatTask();
-    let $container = ".list-" + task.list_id + "-tasks-container"
-    $($container).append(taskHtml)
+    let $container = ".list-" + task.list_id + "-tasks-container";
+    $($container).append(taskHtml);
+    $(container).className += 'toggle'
   })
 }
 

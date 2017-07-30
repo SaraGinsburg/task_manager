@@ -26,7 +26,7 @@ class TasksController < ApplicationController
     @task.destroy
     respond_to do |format|
       format.html { redirect_to list_path(@list) }
-      format.json { render json: @list }
+      format.json { render json: @list, status: 204 }
     end
   end
 
